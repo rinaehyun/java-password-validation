@@ -4,8 +4,8 @@ public class PasswordValidation {
         System.out.println("Hello World!");
     }
 
-    public static boolean hasAtLeastEightCharacters () {
-        return false;
+    public static boolean hasAtLeastEightCharacters (String pwd) {
+        return pwd.length() >= 8;
     }
 
     public static boolean containsDigits () {
