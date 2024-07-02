@@ -4,19 +4,31 @@ public class PasswordValidation {
         System.out.println("Hello World!");
     }
 
-    public static boolean hasAtLeastEightCharacters (String pwd) {
+    /**
+     * Name: hasAtLeastEightCharacters
+     * @param pwd (String)
+     * @return boolean
+     * Validate if the password has length, which is bigger than 8
+     */
+    public static boolean hasAtLeastEightCharacters(String pwd) {
         return pwd.length() >= 8;
     }
 
-    public static boolean containsDigits () {
+    /**
+     * Name: containsDigits
+     * @param pwd (String)
+     * @return boolean
+     * Validate if the password contains at least one number
+     */
+    public static boolean containsDigits(String pwd) {
+        return pwd.matches(".*\\d.*");
+    }
+
+    public static boolean hasUpperAndLowercase() {
         return false;
     }
 
-    public static boolean hasUpperAndLowercase () {
-        return false;
-    }
-
-    public static boolean detectCommonPasswords () {
+    public static boolean detectCommonPasswords() {
         return false;
     }
 }
