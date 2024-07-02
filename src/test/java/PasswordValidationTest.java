@@ -51,4 +51,34 @@ class PasswordValidationTest {
         // THEN
         assertFalse(validate);
     }
+
+    @Test
+    void hasUpperAndLowercaseTest_whenPWDWithAtLeastOneUpperAndLower_thenReturnTrue() {
+        // GIVEN
+        String password = "234!!AbcD";
+
+        // WHEN
+        boolean validate = PasswordValidation.hasUpperAndLowercase(password);
+
+        // THEN
+        assertTrue(validate);
+    }
+
+    @Test
+    void hasUpperAndLowercaseTest_whenPWDWithoutAtLeastOneUpperAndLower_thenReturnFalse() {
+        // GIVEN
+        String passwordWithoutChar = "234!!!!&&";
+        String passwordWithOnlyUpper = "234!ABCD";
+        String passwordWithOnlyLower = "234!abcd";
+
+        // WHEN
+        boolean validateWithoutChar = PasswordValidation.hasUpperAndLowercase(passwordWithoutChar);
+        boolean validateWithOnlyUpper = PasswordValidation.hasUpperAndLowercase(passwordWithOnlyUpper);
+        boolean validateWithOnlyLower = PasswordValidation.hasUpperAndLowercase(passwordWithOnlyLower);
+
+        // THEN
+        assertFalse(validateWithoutChar);
+        assertFalse(validateWithOnlyUpper);
+        assertFalse(validateWithOnlyLower);
+    }
 }

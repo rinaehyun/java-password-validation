@@ -24,8 +24,16 @@ public class PasswordValidation {
         return pwd.matches(".*\\d.*");
     }
 
-    public static boolean hasUpperAndLowercase() {
-        return false;
+    /**
+     * Name: hasUpperAndLowercase
+     * @param pwd (String)
+     * @return boolean
+     * Validate if the password contains at least one Upper and Lower case
+     */
+    public static boolean hasUpperAndLowercase(String pwd) {
+        boolean b = pwd.chars().anyMatch(Character::isUpperCase) &&
+                pwd.chars().anyMatch(Character::isLowerCase);
+        return b;
     }
 
     public static boolean detectCommonPasswords() {
