@@ -39,4 +39,16 @@ public class PasswordValidation {
     public static boolean detectCommonPasswords() {
         return false;
     }
+
+    /**
+     * Name: hasSpecialCharacters
+     * @param pwd (String)
+     * @return boolean
+     * Validate if the password contains at least one special character
+     */
+    public static boolean hasSpecialCharacters(String pwd) {
+        String pattern = "[A-Za-z0-9]";
+        String replacedPwd = pwd.replaceAll(pattern, " ");
+        return !replacedPwd.trim().isEmpty();
+    }
 }

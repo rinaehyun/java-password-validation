@@ -81,4 +81,41 @@ class PasswordValidationTest {
         assertFalse(validateWithOnlyUpper);
         assertFalse(validateWithOnlyLower);
     }
+
+    @Test
+    void hasSpecialCharactersTest_whenPWDHasAtLeastOneSpecialCharacter_thenReturnTrue() {
+        // GIVEN
+        String passwordWithSpecialCharacter1 = "1sk33kedA3%&";
+        String passwordWithSpecialCharacter2 = "§$1sk33kedA3";
+        String passwordWithSpecialCharacter3 = "1sk33k«€edA3";
+
+        // WHEN
+        boolean validate1 = PasswordValidation.hasSpecialCharacters(passwordWithSpecialCharacter1);
+        boolean validate2 = PasswordValidation.hasSpecialCharacters(passwordWithSpecialCharacter2);
+        boolean validate3 = PasswordValidation.hasSpecialCharacters(passwordWithSpecialCharacter3);
+
+
+        // THEN
+        assertTrue(validate1);
+        assertTrue(validate2);
+        assertTrue(validate3);
+    }
+
+    @Test
+    void hasSpecialCharactersTest_whenPWDDoesNotHaveAtLeastOneSpecialCharacter_thenReturnFalse() {
+        // GIVEN
+        String passwordWithOutSpecialCharacter1 = "1sk33kedA3";
+        String passwordWithOutSpecialCharacter2 = "Password123";
+        String passwordWithOutSpecialCharacter3 = "PAEskek334";
+
+        // WHEN
+        boolean validate1 = PasswordValidation.hasSpecialCharacters(passwordWithOutSpecialCharacter1);
+        boolean validate2 = PasswordValidation.hasSpecialCharacters(passwordWithOutSpecialCharacter2);
+        boolean validate3 = PasswordValidation.hasSpecialCharacters(passwordWithOutSpecialCharacter3);
+
+        // THEN
+        assertFalse(validate1);
+        assertFalse(validate2);
+        assertFalse(validate3);
+    }
 }
