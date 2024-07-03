@@ -33,13 +33,19 @@ public class PasswordValidation {
      * Validate if the password contains at least one Upper and Lower case
      */
     public static boolean hasUpperAndLowercase(String pwd) {
-        boolean b = pwd.chars().anyMatch(Character::isUpperCase) &&
+        return pwd.chars().anyMatch(Character::isUpperCase) &&
                 pwd.chars().anyMatch(Character::isLowerCase);
-        return b;
     }
 
-    public static boolean detectCommonPasswords() {
-        return false;
+    /**
+     * Name: detectCommonPasswords
+     * @param pwd (String)
+     * @return boolean
+     * Validate if the password contains weak passwords
+     */
+    public static boolean detectCommonPasswords(String pwd) {
+        String[] weakPWDs = {"password", "PASSWORD", "12345678"};
+        return Arrays.asList(weakPWDs).contains(pwd);
     }
 
     /**

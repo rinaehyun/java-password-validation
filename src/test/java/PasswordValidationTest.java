@@ -118,4 +118,37 @@ class PasswordValidationTest {
         assertFalse(validate2);
         assertFalse(validate3);
     }
+
+    @Test
+    void detectCommonPasswordsTest_whenPWDHasWeakPWE_thenReturnTrue() {
+        //GIVEN
+        String weakPassword1 = "password";
+        String weakPassword2 = "PASSWORD";
+        String weakPassword3 = "12345678";
+
+        // WHEN
+        boolean validateWeakness1 = PasswordValidation.detectCommonPasswords(weakPassword1);
+        boolean validateWeakness2 = PasswordValidation.detectCommonPasswords(weakPassword2);
+        boolean validateWeakness3 = PasswordValidation.detectCommonPasswords(weakPassword3);
+
+        // THEN
+        assertTrue(validateWeakness1);
+        assertTrue(validateWeakness2);
+        assertTrue(validateWeakness3);
+    }
+
+    @Test
+    void detectCommonPasswordsTest_whenPWDHasStrongPWE_thenReturnFalse() {
+        //GIVEN
+        String weakPassword1 = "PasSWoRd";
+        String weakPassword2 = "Skenwmdkso";
+
+        // WHEN
+        boolean validateWeakness1 = PasswordValidation.detectCommonPasswords(weakPassword1);
+        boolean validateWeakness2 = PasswordValidation.detectCommonPasswords(weakPassword2);
+
+        // THEN
+        assertFalse(validateWeakness1);
+        assertFalse(validateWeakness2);
+    }
 }
